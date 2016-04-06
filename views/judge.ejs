@@ -1,0 +1,88 @@
+<% include common/header.ejs %>
+<div>
+    <h2>完成以下各个类别的题目，判断您的体质情况</h2>
+</div>
+
+<div class="">
+    <form id="questions">
+        <% for(var i = 0; i < questionsSets.length; i++){ %>
+        <div>
+            <% var questionsSet = questionsSets[i] %>
+            <h3><%= questionsSet.type %></h3>
+            <table class="table table-hover col-lg-12 tableQuestions">
+                <% var questions = questionsSet.questions %>
+                <% for(var j = 0; j < questions.length; j++){ %>
+                <tr>
+                    <td class='col-lg-7'><%= questions.length * i + j + 1 %>.<%= questions[j] %></td>
+                    <td class='col-lg-5'>
+                        <li class='radio-inline'><label><input type="radio" value="1"
+                                                               name="question<%= questions.length * i + j + 1 %>"/>没有</label>
+                        </li>
+                        <li class='radio-inline'><label><input type="radio" value="2"
+                                                               name="question<%= questions.length * i + j + 1 %>"/>很少有</label>
+                        </li>
+                        <li class='radio-inline'><label><input type="radio" value="3"
+                                                               name="question<%= questions.length * i + j + 1 %>"/>有时有</label>
+                        </li>
+                        <li class='radio-inline'><label><input type="radio" value="4"
+                                                               name="question<%= questions.length * i + j + 1 %>"/>经常有</label>
+                        </li>
+                        <li class='radio-inline'><label><input type="radio" value="5"
+                                                               name="question<%= questions.length * i + j + 1 %>"/>总是有</label>
+                        </li>
+                    </td>
+                </tr>
+                <% } %>
+            </table>
+        </div>
+        <% } %>
+        <input class='btn btn-lg btn-primary pull-right' type='submit' value='做完了，提交'/>
+    </form>
+</div>
+
+<!--有未填写的题目，提示错误-->
+<div id="failed_modal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+                <h4>您有题目未填写！</h4>
+
+                <p id="unAnswered"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!--提交成功，显示结果-->
+<div id="result_modal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">测试结果</h4>
+            </div>
+            <div class="modal-body">
+                <p id="result"></p>
+                <a class="btn btn-primary" href="/feature" role="button">查看特征></a>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<% include common/footer.ejs %>
