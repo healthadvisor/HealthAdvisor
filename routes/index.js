@@ -27,7 +27,15 @@ router.get('/judge', function(req, res, next) {
 });
 
 router.get('/feature', function(req, res, next) {
-  res.render('feature');
+  fs.readFile(path.join(__dirname, '../public/json/features.json'),function(err,data){
+    if(err){
+      console.log(err);
+      return;
+    }
+    var params = {};
+    params.descriptions = JSON.parse(data);
+    res.render('feature',params);
+  });
 });
 
 router.get('/recuperate', function(req, res, next) {

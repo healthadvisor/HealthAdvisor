@@ -1,4 +1,35 @@
 <% include common/header.ejs %>
 
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <% for(var i = 0; i < descriptions.length; i++){ %>
+        <% var type = descriptions[i] %>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="heading<%= i %>">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= i %>" aria-expanded="true" aria-controls="collapse<%= i %>">
+                        <h4><%= type.type %></h4>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse<%= i %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%= i %>">
+                <div class="panel-body">
+                    总体特征：<%=type.general_feature %>
+                    <br/>
+                    形体特征：<%=type.physical_feature %>
+                    <br/>
+                    常见表现：<%=type.presentation %>
+                    <br/>
+                    心理特征：<%=type.mental_feature %>
+                    <br/>
+                    发病倾向：<%=type.tender %>
+                    <br/>
+                    对外界环境适应能力：<%=type.adaptation %>
+                    <br/>
+                </div>
+            </div>
+        </div>
+    <% } %>
+</div>
+
 
 <%include common/footer.ejs%>

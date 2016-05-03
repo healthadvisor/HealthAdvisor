@@ -43,17 +43,5 @@ $(document).ready(function () {
                 $("#result_modal").modal();
             }
         );
-        //var originalPoints = [];
-        //var convertedPoints = [];
-        //for(var i = 0; i < 9; i++){
-        //    originalPoints[i] = 0;
-        //    for(var j = 0; j < 7; j++){
-        //        originalPoints[i] += parseInt(answers[7*i + j]);
-        //    }
-        //    convertedPoints[i] = calculatePoints(originalPoints[i]);
-        //}
-        //console.log(originalPoints);
-        //console.log(convertedPoints);
-        //checkType(convertedPoints);
     }
 });
