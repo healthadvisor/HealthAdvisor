@@ -39,7 +39,15 @@ router.get('/feature', function(req, res, next) {
 });
 
 router.get('/recuperate', function(req, res, next) {
-  res.render('recuperate');
+  fs.readFile(path.join(__dirname, '../public/json/recuperate.json'),function(err,data){
+    if(err){
+      console.log(err);
+      return;
+    }
+    var params = {};
+    params.recuperates = JSON.parse(data);
+    res.render('recuperate',params);
+  });
 });
 
 router.get('/prevention', function(req, res, next) {

@@ -1,3 +1,32 @@
 <% include common/header.ejs %>
 
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <% for(var i = 0; i < recuperates.length; i++){ %>
+    <% var type = recuperates[i] %>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="heading<%= i %>">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= i %>" aria-expanded="true" aria-controls="collapse<%= i %>">
+                    <h5><%= type.type %></h5>
+                </a>
+            </h4>
+        </div>
+        <div id="collapse<%= i %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%= i %>">
+            <div class="panel-body">
+                饮食调节：<%=type.food %>
+                <br/>
+                生活起居：<%=type.lifestyle %>
+                <br/>
+                体育锻炼：<%=type.exercise %>
+                <br/>
+                情志调摄：<%=type.emotion %>
+                <br/>
+                药物调理：<%=type.medicine %>
+                <br/>
+            </div>
+        </div>
+    </div>
+    <% } %>
+</div>
+
 <%include common/footer.ejs%>
